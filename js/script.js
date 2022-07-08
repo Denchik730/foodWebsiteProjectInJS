@@ -222,12 +222,12 @@ window.addEventListener('DOMContentLoaded', () => {
         return await res.json();
     };
 
-    getResource('http://localhost:3000/menu')
-        .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
-                new MenuCard(img, altimg, title, descr, price * 27, ".menu .container").render();
-            });
-        });
+    // getResource('http://localhost:3000/menu')
+    //     .then(data => {
+    //         data.forEach(({img, altimg, title, descr, price}) => {
+    //             new MenuCard(img, altimg, title, descr, price * 27, ".menu .container").render();
+    //         });
+    //     });
 
     // getResource('http://localhost:3000/menu')
     //     .then(data => createCard(data));
@@ -252,6 +252,16 @@ window.addEventListener('DOMContentLoaded', () => {
     //         document.querySelector('.menu .container').append(element);
     //     });
     // }
+
+
+    // axios
+    axios.get('http://localhost:3000/menu')
+        .then(data => {
+            data.data.forEach(({img, altimg, title, descr, price}) => {
+                    new MenuCard(img, altimg, title, descr, price * 27, ".menu .container").render();
+            });
+        });
+
 
     // new MenuCard(
     //     "img/tabs/vegy.jpg",
